@@ -48,7 +48,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.baeldung.demo.DemoApplication</mainClass>
+					<mainClass>sk.pavlovsky.ecasenka.EcasenkaApplication</mainClass>
 					<layout>JAR</layout>
 				</configuration>
 			</plugin>
