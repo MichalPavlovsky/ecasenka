@@ -1,30 +1,58 @@
 package sk.pavlovsky.ecasenka.modul;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
+
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class User implements UserDetails {
+   @Id
+   @GeneratedValue
+   private Integer id;
+   private String firstName;
+   private String lastName;
+   private  String email;
+   private String password;
 
-    @Column(nullable = true)
-    private String name;
+   @Override
+   public Collection<? extends GrantedAuthority> getAuthorities() {
+      return null;
+   }
 
-    public Long getId() {
-        return id;
-    }
+   @Override
+   public String getUsername() {
+      return null;
+   }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+   @Override
+   public boolean isAccountNonExpired() {
+      return false;
+   }
 
-    public String getName() {
-        return name;
-    }
+   @Override
+   public boolean isAccountNonLocked() {
+      return false;
+   }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+   @Override
+   public boolean isCredentialsNonExpired() {
+      return false;
+   }
+
+   @Override
+   public boolean isEnabled() {
+      return false;
+   }
 }
