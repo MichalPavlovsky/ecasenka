@@ -1,20 +1,16 @@
 package sk.pavlovsky.ecasenka.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDto {
-    public UserDto() {
-    }
+    private String fullName;
 
-    private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public UserDto(String name) {
-        this.name = name;
+    public UserDto(String firstName, String lastName) {
+        this.fullName = firstName + " " + lastName;
     }
 }

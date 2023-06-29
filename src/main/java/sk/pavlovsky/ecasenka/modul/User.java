@@ -18,13 +18,16 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="users")
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = {"firstName", "lastName"}))
 public class User implements UserDetails {
    @Id
    @GeneratedValue
    private Integer id;
+   @Column(unique = false)
    private String firstName;
+   @Column(unique = false)
    private String lastName;
+
    private  String email;
    private String password;
    @Enumerated(EnumType.STRING)
