@@ -24,12 +24,12 @@ public class DataController {
     private final RepoForTerm repoForTerm;
 
     @PostMapping("/term")
-    public Term addTerm(TermRequestBody requestBody){
+    public void addTerm(@RequestBody TermRequestBody requestBody){
         User doctor = repository.findById(requestBody.getIdDoctor()).orElse(null);
         User patient = repository.findById(requestBody.getIdPatient()).orElse(null);
         var term = Term.builder().time(requestBody.getTime())
                 .date(requestBody.getDate()).doctor(doctor).patient(patient).build();
-        return repoForTerm.save(term);
+        repoForTerm.save(term);
     }
 
     @GetMapping("/doctors")
