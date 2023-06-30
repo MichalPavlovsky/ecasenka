@@ -12,6 +12,7 @@ import sk.pavlovsky.ecasenka.modul.Role;
 @NoArgsConstructor
 public class AuthenticationResponse {
 
+    Integer id;
     String name;
     Role role;
     String token;
