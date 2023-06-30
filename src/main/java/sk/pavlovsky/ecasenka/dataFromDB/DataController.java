@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.*;
 
 import sk.pavlovsky.ecasenka.UserRepository;
 import sk.pavlovsky.ecasenka.dto.UserDto;
+import sk.pavlovsky.ecasenka.modul.Term;
 import sk.pavlovsky.ecasenka.modul.User;
+import sk.pavlovsky.ecasenka.terms.RepoForTerm;
+import sk.pavlovsky.ecasenka.terms.TermRequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +21,16 @@ import java.util.Optional;
 public class DataController {
 
     private final UserRepository repository;
+    private final RepoForTerm repoForTerm;
+
+    @PostMapping("/term")
+    public Term addTerm(TermRequestBody requestBody){
+        User doctor = repository.findById(requestBody.getIdDoctor()).orElse(null);
+        User patient = repository.findById(requestBody.getIdPatient()).orElse(null);
+        var term = Term.builder().time(requestBody.getTime())
+                .date(requestBody.getDate()).doctor(doctor).patient(patient).build();
+        return repoForTerm.save(term);
+    }
 
     @GetMapping("/doctors")
     public List<UserDto> getDoctorsName(){

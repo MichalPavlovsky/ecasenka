@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 
 import java.time.LocalDate;
@@ -21,9 +20,8 @@ public class Term {
     @Id
     @GeneratedValue
     private Integer id;
-
-    private LocalTime time;
-    private LocalDate date;
+    private String time;
+    private String date;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id")
