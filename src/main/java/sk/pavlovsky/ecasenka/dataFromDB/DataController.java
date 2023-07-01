@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import sk.pavlovsky.ecasenka.UserRepository;
 import sk.pavlovsky.ecasenka.config.TermService;
+import sk.pavlovsky.ecasenka.dto.TermDto;
 import sk.pavlovsky.ecasenka.dto.UserDto;
 import sk.pavlovsky.ecasenka.modul.Term;
 import sk.pavlovsky.ecasenka.modul.User;
@@ -27,7 +28,7 @@ public class DataController {
     private final TermService termService;
 
     @PostMapping("/getterms")
-    public List<Term> getTerms(@RequestBody Map<String, Integer> request){
+    public List<TermDto> getTerms(@RequestBody Map<String, Integer> request){
         int idDoctor = request.get("id");
         return termService.getListOfTerms(idDoctor);
     }
