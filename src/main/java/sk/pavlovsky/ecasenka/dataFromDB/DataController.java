@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import sk.pavlovsky.ecasenka.UserRepository;
+import sk.pavlovsky.ecasenka.config.TermService;
 import sk.pavlovsky.ecasenka.dto.UserDto;
 import sk.pavlovsky.ecasenka.modul.Term;
 import sk.pavlovsky.ecasenka.modul.User;
@@ -22,6 +23,15 @@ public class DataController {
 
     private final UserRepository repository;
     private final RepoForTerm repoForTerm;
+
+    private final TermService termService;
+
+    @PostMapping("/getterms")
+    public List<Term> getTerms(@RequestBody Map<String, Integer> request){
+        int idDoctor = request.get("id");
+        return termService.getListOfTerms(idDoctor);
+    }
+
 
     @PostMapping("/term")
     public void addTerm(@RequestBody TermRequestBody requestBody){

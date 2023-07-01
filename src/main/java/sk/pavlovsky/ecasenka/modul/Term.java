@@ -20,7 +20,9 @@ public class Term {
     @Id
     @GeneratedValue
     private Integer id;
+
     private String time;
+
     private String date;
 
     @ManyToOne
