@@ -1,4 +1,4 @@
-package sk.pavlovsky.ecasenka.dataFromDB;
+package sk.pavlovsky.ecasenka.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +20,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/get")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000")
 public class DataController {
 
     private final UserRepository repository;
@@ -43,6 +42,7 @@ public class DataController {
                 .date(requestBody.getDate()).doctor(doctor).patient(patient).build();
         repoForTerm.save(term);
     }
+
 
     @GetMapping("/doctors")
     public List<UserDto> getDoctorsName(){
