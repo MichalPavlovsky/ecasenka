@@ -13,7 +13,9 @@ import sk.pavlovsky.ecasenka.modul.Role;
 public class AuthenticationResponse {
 
     Integer id;
-    String name;
+    String firstName;
+
+    String lastName;
     Role role;
     String token;
 

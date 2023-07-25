@@ -8,9 +8,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDto {
-    private String fullName;
+    private String firstName;
+    private String lastName;
 
-    public UserDto(String firstName, String lastName) {
-        this.fullName = firstName + " " + lastName;
-    }
+    private int id;
+
+//    public UserDto(String firstName, String lastName, String id) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.id = id;
+//    }
 }
